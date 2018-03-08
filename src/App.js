@@ -3,6 +3,7 @@ import './App.css';
 /* Testing components */
 // import CountyMap from './map.js'
 import Chart2 from './barChart.js'
+import ProgressBar from './progressBar.js'
 /* Import Data */
 // import * as testData from './test-data.json';
 import * as data from './wild-pig-data.json';
@@ -14,6 +15,8 @@ class App extends Component {
       super(props)
       this.state = {
          yearIndex: 0,
+         year: 2000,
+         progress: 0,
          data: [],
          paused: false,
       }
@@ -23,7 +26,7 @@ class App extends Component {
    };
 
 
-   filterData(year) {
+   filterData(year, uniqueYears) {
 
       var results = []
       data["PIG POPULATIONS"].forEach(function(item){
@@ -32,8 +35,13 @@ class App extends Component {
         }
       })
 
+      var progressPercent = Number((this.state.yearIndex/(uniqueYears.length-1)*100).toFixed(0)
+
+
       this.setState({
       data: results,
+      year: year,
+      progress: progressPercent,
       yearIndex: this.state.yearIndex + 1
       })  
    }
@@ -51,7 +59,7 @@ class App extends Component {
 
       var newIndex = this.state.yearIndex;
       if(newIndex <= uniqueYears.length -1){
-         this.filterData(uniqueYears[newIndex]) 
+         this.filterData(uniqueYears[newIndex], uniqueYears) 
 
       }
       else {
@@ -61,39 +69,26 @@ class App extends Component {
 
 
    componentDidMount () {
-
-      //this.filterData(this.state.year) 
       this.changeData()
-      // var yearsArray = this.state.uniqueYears
-
-
-      // Run the Set time out in here 
-      // this.timerId = setInterval( () => this.changeData, 2000);
-
-      this.timerID = setInterval(
-            () => this.changeData(),
-      2000
-    );
       
-
    }
 
-   componentWillUnmount() {
-      clearInterval(this.timerID);
-   }
+   // componentWillUnmount() {
+   //    clearInterval(this.timerID);
+   // }
 
    handleStop (event){
       event.preventDefault();
+      this.setState({paused: true})
       clearInterval(this.timerID);
+
    }
 
    handleRestart(event){
-       event.preventDefault();
-this.timerID = setInterval(
-            () => this.changeData(),
-      2000
-    );
-
+      event.preventDefault();
+      this.timerID = setInterval(
+            () => this.changeData(), 2000
+      );
    }
  
 
@@ -104,8 +99,12 @@ this.timerID = setInterval(
 
       <div className="App">
       <Chart2 data = {this.state.data}/>
-      <div className="button" onClick={this.handleStop}> <h1>PAUSE THIS</h1> </div>
-      <div className="button" onClick={this.handleRestart}> <h1>RESTART THIS</h1> </div>
+      <div className="actions">
+         <img className="actionButton" src="pause.png" onClick={this.handleStop}/>
+         <img className="actionButton" src="play.png" onClick={this.handleRestart}/>
+         <ProgressBar year={this.state.year} yearIndex = {this.state.yearIndex} progress={this.state.progress}/>
+         
+         </div>
       </div>
     );
   }
