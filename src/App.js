@@ -13,11 +13,13 @@ class App extends Component {
    constructor(props){
       super(props)
       this.state = {
-         year: 2000,
-         uniqueYears: [],
+         yearIndex: 0,
          data: [],
-         paused: false
+         paused: false,
       }
+
+      this.handleStop = this.handleStop.bind(this);
+      this.handleRestart = this.handleRestart.bind(this);
    };
 
 
@@ -31,7 +33,8 @@ class App extends Component {
       })
 
       this.setState({
-      data: results
+      data: results,
+      yearIndex: this.state.yearIndex + 1
       })  
    }
 
@@ -46,7 +49,14 @@ class App extends Component {
          }
       })
 
-      this.setState({uniqueYears: uniqueYears})
+      var newIndex = this.state.yearIndex;
+      if(newIndex <= uniqueYears.length -1){
+         this.filterData(uniqueYears[newIndex]) 
+
+      }
+      else {
+         clearInterval(this.state.intervalId)
+      }
    }
 
 
@@ -54,24 +64,37 @@ class App extends Component {
 
       //this.filterData(this.state.year) 
       this.changeData()
-      var yearsArray = this.state.uniqueYears
+      // var yearsArray = this.state.uniqueYears
 
-      var i = -1;
-      (function f(){
-         i = (i+1) % yearsArray.length;
-         this.filterData(yearsArray[i])
-         setTimeout(f, 5000) 
-      })
 
       // Run the Set time out in here 
-      //this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+      // this.timerId = setInterval( () => this.changeData, 2000);
+
+      this.timerID = setInterval(
+            () => this.changeData(),
+      2000
+    );
+      
 
    }
 
-      // componentWillUnmount() {
-   //   clearInterval(this.interval);
-   // }
-  
+   componentWillUnmount() {
+      clearInterval(this.timerID);
+   }
+
+   handleStop (event){
+      event.preventDefault();
+      clearInterval(this.timerID);
+   }
+
+   handleRestart(event){
+       event.preventDefault();
+this.timerID = setInterval(
+            () => this.changeData(),
+      2000
+    );
+
+   }
  
 
 
@@ -81,6 +104,8 @@ class App extends Component {
 
       <div className="App">
       <Chart2 data = {this.state.data}/>
+      <div className="button" onClick={this.handleStop}> <h1>PAUSE THIS</h1> </div>
+      <div className="button" onClick={this.handleRestart}> <h1>RESTART THIS</h1> </div>
       </div>
     );
   }
