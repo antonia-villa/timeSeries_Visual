@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
-import * as d3 from 'd3'
-import * as d3ScaleChromatic from 'd3-scale-chromatic';
-import * as d3Scale from 'd3-scale';
-import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, Tooltip,LabelList, Legend} from 'recharts';
+
+import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, LabelList} from 'recharts';
 import {reFormat} from './dataCleansing.js'
 
-class Chart2 extends Component {
+class Chart extends Component {
   render() {
     // Reformat input data
     const data = reFormat(this.props.data);
 
     const CustomizedLabel = (props) => {
+    const test = this.props;
+    console.log('props inside custom label', test)
     const {x, y, fill, value} = props;
 
       return (
@@ -38,9 +38,9 @@ class Chart2 extends Component {
          <XAxis 
              dataKey="Text"
              fontFamily="Roboto"
-             fontWeight="900" 
-             tickSize
-             dy='100'/>
+             fontWeight="bold" 
+             
+             dy={100}/>
          <YAxis hide/>
          <Bar 
              dataKey="percent" 
@@ -57,4 +57,4 @@ class Chart2 extends Component {
   }
 
 
-export default Chart2;
+export default Chart;

@@ -6,23 +6,14 @@ import './App.css';
 import Visual from './Visual.js'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      user: {},
-      selected_dream_data: {}
-    }
-   }
-
    render() {
       return(
       <div className="App">
-          <Router>
-
-          <Route path="/" component={Visual} />
-            </Router>
-        </div>
-        )
+         <Router>
+            <Route path="/" component={Visual} />
+         </Router>
+      </div>
+      )
    }
 }
 
