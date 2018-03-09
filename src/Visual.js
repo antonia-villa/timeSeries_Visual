@@ -128,19 +128,21 @@ class Visual extends Component {
   render() {
     return (
 
-      <div className="App">
-      <Chart data = {this.state.data}/>
-      <div className="actions">
-	  	<div id="startButtons">
-	      	<img className="actionButton" src="play.png" alt="Play" onClick={this.handleStart}/>
-	        <img className="actionButton" src="pause.png" alt="Pause" onClick={this.handlePause}/>
-	    </div> 
-	    <div id="replayButton"> 
-        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>
-        </div>  
-       	<ProgressBar year={this.state.year} yearIndex={this.state.yearIndex} progress={this.state.progress}/>
-         </div>
-      </div>
+    <div className="App">
+	    <Chart data = {this.state.data}/>
+	    <div className="actions">
+		  	<div id="startButtons">
+		      	<img className="actionButton" src="play.png" alt="Play" onClick={this.handleStart}/>
+		        <img className="actionButton" src="pause.png" alt="Pause" onClick={this.handlePause}/>
+		    </div> 
+		    <div id="replayButton"> 
+	        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>
+	        </div>
+	        <div className="progressBar">
+	       		<ProgressBar year={this.state.year} yearIndex={this.state.yearIndex} progress={this.state.progress} allYears={this.state.uniqueYears} />
+	        </div>
+	    </div>
+	    </div>
     );
   }
 }

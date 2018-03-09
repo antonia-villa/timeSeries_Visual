@@ -3,20 +3,30 @@ import './App.css';
 
 class ProgressBar extends Component {
 render(){
-	const style = { 
-		height: "5em"
+	console.log(this.props.allYears)
+	if(this.props.allYears){
+		const allYears = this.props.allYears.map(y => {
+			return <div>{y}</div>
+		})
 	}
 
 	const width = String(Number(this.props.progress)+"vw")
-console.log(width)
-	return(
 
+	const staticStyle = {
+		backgroundColor: '#bcbcbc'
+	}
+	const progressStyle = {
+		backgroundColor: '#0a536f',
+		width: width
+	}
+
+	return(
 		<div className="progressBarContainer"> 
-		<h1>{this.props.year}</h1>
-		<svg width="100%" height="50" style={style}>
-  			<rect width="100vw" height="10" fill="#ccc" rx="0" ry="0"></rect>
-  			<rect width={width} height="10" fill="#0078bc" rx="0" ry="0"></rect>
-  		</svg>
+			<div className="dataBar back" style={staticStyle}> </div>
+			<div className="dataBar front" style={progressStyle}> </div>
+			<div className="yearsArray">
+			 	<h4>{allYears}</h4> 
+			</div>
 		</div>
 		)
 }
