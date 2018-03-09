@@ -6,15 +6,32 @@
   font-size: large;
 }
 
+/***** Progress Bar and Play Container ****/
 .actions{
 	display:inline-block;
+	width: 100%;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-.button{
+
+.progressBarContainer{
 	display: inline-block;
+	width:100%;
 }
 
 .actionButton{
+	display: inline-block;
 	height: 20px;
 	width: 20px;
+}
+
+
+#startButtons{
+	float:left;
+}
+
+#replayButton{
+	display: inline-block;
+	float:right;
 }
