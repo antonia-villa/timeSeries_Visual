@@ -3,7 +3,8 @@ import './App.css';
 
 class ProgressBar extends Component {
 render(){
-	console.log(this.props.allYears)
+
+	// Calculate spacing of 
 	const yearSpacing = String(Math.floor((100/((this.props.allYears).length)))+'%')
 	const yearSpaceStyle = {
 		width: yearSpacing
@@ -11,11 +12,9 @@ render(){
 	console.log(yearSpacing)
 
 	const allYears = this.props.allYears.map(y => {
-			return <div style={yearSpaceStyle}>{y}</div>
+			return <div key={y} style={yearSpaceStyle}>{y}</div>
 	})
 
-	
-	// 		const allYears = this.props.allYears
 
 	const width = String(Number(this.props.progress)+"vw")
 
