@@ -8,7 +8,6 @@ class Chart extends Component {
   render() {
     // Reformat input data
     const data = reFormat(this.props.data);
-
     const CustomizedLabel = (props) => {
     const test = this.props;
     console.log('props inside custom label', test)

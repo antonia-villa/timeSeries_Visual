@@ -14,12 +14,13 @@ class Visual extends Component {
    constructor(props){
       super(props)
       this.state = {
+      	allData: data["PIG POPULATIONS"],
       	uniqueYears: '',
-         yearIndex: '',
-         year: '',
-         progress: 0,
-         data: [],
-         paused: ''
+        yearIndex: '',
+        year: '',
+        progress: 0,
+        data: [],
+        paused: ''
       }
       this.handlePause = this.handlePause.bind(this);
       this.handleStart = this.handleStart.bind(this);
@@ -32,7 +33,7 @@ class Visual extends Component {
 
    	 // Select Sub-Data set from raw data based on year
       var results = []
-      data["PIG POPULATIONS"].forEach(function(item){
+      this.state.allData.forEach(function(item){
         if(item.year === year){
           results.push(item)
         }
@@ -61,10 +62,8 @@ class Visual extends Component {
       }
    }
 
-
-   componentDidMount () {
-
-		var rawData = data["PIG POPULATIONS"]
+   componentWillMount () {
+		var rawData = this.state.allData
 
 		// Extract unique years from data set 
 		var uniqueYears = [];
@@ -73,22 +72,30 @@ class Visual extends Component {
 	            uniqueYears.push(item.year)
 	         }
 	      })
+	    this.setState({
+	    	uniqueYears: uniqueYears
+	    })
+
+   }
+
+   componentDidMount () {
+
+
 
 	    // Extract and parse query string parameters 
    		var queryParams = parseQueryString.parse(this.props.location.search);
 		var year = queryParams.year
-		var indexYear = uniqueYears.indexOf(Number(year))
+		var indexYear = this.state.uniqueYears.indexOf(Number(year))
 		var paused = (queryParams.paused === 'true')
 		
 		// Set State and run interval
 		this.setState({
 			paused: paused,
 			year: year,
-			yearIndex: indexYear,
-			uniqueYears: uniqueYears
+			yearIndex: indexYear
 		},
 		() => {
-			this.changeData(uniqueYears)
+			this.changeData(this.state.uniqueYears)
 				if(!this.state.paused){
 					this.timerID = setInterval(
 	            		() => this.changeData(), 2000);    	

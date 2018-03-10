@@ -4,11 +4,18 @@ import './App.css';
 class ProgressBar extends Component {
 render(){
 	console.log(this.props.allYears)
-	if(this.props.allYears){
-		const allYears = this.props.allYears.map(y => {
-			return <div>{y}</div>
-		})
+	const yearSpacing = String(Math.floor((100/((this.props.allYears).length)))+'%')
+	const yearSpaceStyle = {
+		width: yearSpacing
 	}
+	console.log(yearSpacing)
+
+	const allYears = this.props.allYears.map(y => {
+			return <div style={yearSpaceStyle}>{y}</div>
+	})
+
+	
+	// 		const allYears = this.props.allYears
 
 	const width = String(Number(this.props.progress)+"vw")
 
@@ -25,7 +32,7 @@ render(){
 			<div className="dataBar back" style={staticStyle}> </div>
 			<div className="dataBar front" style={progressStyle}> </div>
 			<div className="yearsArray">
-			 	<h4>{allYears}</h4> 
+			 	{allYears}
 			</div>
 		</div>
 		)
