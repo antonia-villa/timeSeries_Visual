@@ -14,3 +14,16 @@ export function reFormat(data){
     // return data
 	return data
 }
+
+export function uniqueValues(data){
+
+	// Extract unique years from data set 
+	var uniqueYears = [];
+    data.forEach(function(item){
+         if(!uniqueYears.includes(item.year)){
+            uniqueYears.push(item.year)
+         }
+     })
+
+    return uniqueYears
+}

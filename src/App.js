@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 /* Additional Components */
-import Visual from './Visual.js'
+import VisualContainer from './VisualContainer.js'
 
 class App extends Component {
    render() {
       return(
       <div className="App">
          <Router>
-            <Route path="/" component={Visual} />
+            <Route path="/" component={VisualContainer} />
          </Router>
       </div>
       )

@@ -6,16 +6,18 @@ import ProgressBar from './progressBar.js'
 
 /* Import Data */
 import * as data from './wild-pig-data.json';
+/* Import Data cleansing function */
+import {uniqueValues} from './dataCleansing.js'
 
 /* Used for Query URL Params */
 import parseQueryString from 'query-string';
 
-class Visual extends Component {
+class VisualContainer extends Component {
    constructor(props){
       super(props)
       this.state = {
       	allData: data["PIG POPULATIONS"],
-      	uniqueYears: '',
+      	uniqueYears: uniqueValues(data["PIG POPULATIONS"]),
         yearIndex: '',
         year: '',
         progress: 0,
@@ -30,7 +32,6 @@ class Visual extends Component {
 
 // Filter data based on year to pass to Chart component
    filterData(year, uniqueYears) {
-
    	 // Select Sub-Data set from raw data based on year
       var results = []
       this.state.allData.forEach(function(item){
@@ -62,26 +63,8 @@ class Visual extends Component {
       }
    }
 
-   componentWillMount () {
-		var rawData = this.state.allData
-
-		// Extract unique years from data set 
-		var uniqueYears = [];
-	    rawData.forEach(function(item){
-	         if(!uniqueYears.includes(item.year)){
-	            uniqueYears.push(item.year)
-	         }
-	      })
-	    this.setState({
-	    	uniqueYears: uniqueYears
-	    })
-
-   }
 
    componentDidMount () {
-
-
-
 	    // Extract and parse query string parameters 
    		var queryParams = parseQueryString.parse(this.props.location.search);
 		var year = queryParams.year
@@ -136,8 +119,10 @@ class Visual extends Component {
     return (
     <div className="visualBackground">
 	    <div className="visualContainer">
-	    	<h1 className="title">Wild Pig Population</h1>
-	    	<h2 className="subtitle">Hawaiian Island: 2001-2005</h2>
+	    	<div className="titleContainer">
+	    		<h1 className="title">Hawaiian Wild Pig Population</h1>
+	    		<h2 className="subtitle">Distribution by Island: 2001-2005</h2>
+		    </div>
 		    <Chart data = {this.state.data}/>
 		    <div className="actions">
 			  	<div id="startButtons">
@@ -151,6 +136,9 @@ class Visual extends Component {
 		        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>
 		        </div>
 		    </div>
+		    <div className="footer">
+		    	<p>NOTE: The data displayed represents the percent distribution of the total pig population of Hawaii by island by year.</p>
+		    </div>
 		</div>
 	</div>
     );
@@ -159,4 +147,4 @@ class Visual extends Component {
 
 
 
-export default Visual;
+export default VisualContainer;

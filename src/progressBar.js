@@ -4,28 +4,40 @@ import './App.css';
 class ProgressBar extends Component {
 render(){
 
-	// Calculate spacing of 
-	const yearSpacing = String(Math.floor((100/((this.props.allYears).length)))+'%')
+	// Calculate spacing of year text
+	const yearSpacing = Math.floor((100/((this.props.allYears).length)))
 	const yearSpaceStyle = {
-		width: yearSpacing
-
+		width: yearSpacing+'%'
 	}
-	console.log(yearSpacing)
+
+	const width = Number(this.props.progress)
+
+	const whiteFont = {
+		color:'#FFFFFF'
+	}
 
 	const allYears = this.props.allYears.map(y => {
-			return <div key={y} style={yearSpaceStyle}><p className="singleYear">{y}</p></div>
+		// Conditional Formatting to change font color of numbers
+		let yearsArray = null;
+	 	if(((this.props.allYears.indexOf(y)+1)*(yearSpacing))<=width){
+			yearsArray = <p className="singleYearWhite" style={whiteFont}>{y}</p>
+		} else {
+			yearsArray = <p className="singleYear">{y}</p>
+		}
+
+		return <div key={y} style={yearSpaceStyle}>
+			{yearsArray}
+		</div>			
 	})
-
-
-	const width = String(Number(this.props.progress)+"%")
 
 	const staticStyle = {
 		backgroundColor: '#e8e8e8',
-		color: '#000000'
 	}
+
 	const progressStyle = {
 		backgroundColor: '#003a6d',
-		width: width
+		width: width+'%',
+		color:'#FFFFFF'
 	}
 
 	return(
@@ -37,8 +49,7 @@ render(){
 			</div>
 		</div>
 		)
-}
-
+	}
 }
 
 export default ProgressBar;

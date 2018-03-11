@@ -17,7 +17,7 @@ class Chart extends Component {
            y={y} 
            dy={-4} 
            fontSize='14' 
-           fontFamily='Arimo'
+           fontFamily='Merriweather Sans'
            fill="black"
            position="insideTop"
            >
@@ -34,7 +34,7 @@ class Chart extends Component {
               margin={{top: 0, right: 0, left: 0, bottom: 0}}>
          <XAxis 
              dataKey="island"
-             fontFamily="Arimo"
+             fontFamily="Merriweather Sans"
              tick={{ fill: 'black' }}
              fontWeight="bold" 
              />
@@ -42,7 +42,7 @@ class Chart extends Component {
          <Bar 
              dataKey="percent" 
              barSize ={200}
-             fontFamily="Arimo"
+             fontFamily="Merriweather Sans"
              fill="#96c568" >
             <LabelList content={CustomizedLabel}/>}
           >
