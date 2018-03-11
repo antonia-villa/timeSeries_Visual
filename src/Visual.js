@@ -135,18 +135,20 @@ class Visual extends Component {
   render() {
     return (
 
-    <div className="App">
+    <div className="visualContainer">
+    	<h1 className="title">Wild Pig Population</h1>
+    	<h2 className="subtitle">Hawaiian Island: 2001-2005</h2>
 	    <Chart data = {this.state.data}/>
 	    <div className="actions">
 		  	<div id="startButtons">
 		      	<img className="actionButton" src="play.png" alt="Play" onClick={this.handleStart}/>
 		        <img className="actionButton" src="pause.png" alt="Pause" onClick={this.handlePause}/>
 		    </div> 
-		    <div id="replayButton"> 
-	        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>
-	        </div>
 	        <div className="progressBar">
 	       		<ProgressBar year={this.state.year} yearIndex={this.state.yearIndex} progress={this.state.progress} allYears={this.state.uniqueYears} />
+	        </div>
+	       <div id="replayButton"> 
+	        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>
 	        </div>
 	    </div>
 	    </div>

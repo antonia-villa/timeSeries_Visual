@@ -9,7 +9,7 @@ class Chart extends Component {
     // Reformat input data
     const data = reFormat(this.props.data);
     const CustomizedLabel = (props) => {
-    const {x, y, fill, value} = props;
+    const {x, y, value} = props;
 
       return (
         <text 
@@ -18,7 +18,7 @@ class Chart extends Component {
            dy={-4} 
            fontSize='16' 
            fontFamily='sans-serif'
-           fill={fill}
+           fill="black"
            position="insideTop"
 
            >
@@ -35,15 +35,16 @@ class Chart extends Component {
               margin={{top: 0, right: 0, left: 0, bottom: 0}}>
          <XAxis 
              dataKey="island"
-             fontFamily="Roboto"
+             fontFamily="Arimo"
+             tick={{ fill: 'black' }}
              fontWeight="bold" 
              />
          <YAxis hide/>
          <Bar 
              dataKey="percent" 
              barSize ={200}
-             fontFamily="Roboto"
-             fill="#A1D4E3" >
+             fontFamily="Arimo"
+             fill="#415561" >
             <LabelList content={CustomizedLabel}/>}
           >
           </Bar>
