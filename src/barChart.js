@@ -9,18 +9,17 @@ class Chart extends Component {
     // Reformat input data
     const data = reFormat(this.props.data);
     const CustomizedLabel = (props) => {
-    const {x, y, value} = props;
-
+    const {x, y, value, width, height} = props;
+    console.log(width)
       return (
         <text 
-           x={x} 
+           x={x + width / 2}
            y={y} 
            dy={-4} 
-           fontSize='16' 
-           fontFamily='sans-serif'
+           fontSize='14' 
+           fontFamily='Arimo'
            fill="black"
            position="insideTop"
-
            >
            {value}%
         </text>
@@ -44,7 +43,7 @@ class Chart extends Component {
              dataKey="percent" 
              barSize ={200}
              fontFamily="Arimo"
-             fill="#415561" >
+             fill="#96c568" >
             <LabelList content={CustomizedLabel}/>}
           >
           </Bar>

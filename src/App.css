@@ -1,9 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Arimo', sans-serif;
-  background: url('./img/background.jpg') no-repeat;
-  opacity: .8;
-  background-size: cover;
+  background-color: #003a6d;
   padding-top: 20px;
   padding-left: 50px;
   padding-right: 50px;
@@ -11,10 +9,19 @@
 
 }
 
+.visualBackground{
+  background: url('./img/islands.png') no-repeat;
+  opacity: .8;
+  background-size: 100%;
+}
+
 .visualContainer{
-	background-color: rgba(249,237,217,.7);
+	background-color: rgba(232,232,232,.6);
 	padding: 20px;
-	margin-bottom: 40px;
+}
+
+.recharts-surface{
+	padding-top:10px;
 }
 
 
@@ -37,8 +44,10 @@ h2{
 /***** Progress Bar and Play Container ****/
 .actions{
 	display:block;
-	width: 100%;
-	margin-right: 20px;
+	width: 98%;
+	padding:10px;
+	margin-top:10px;
+	background-color: white;
 }
 
 .progressBarContainer {
@@ -77,13 +86,23 @@ opacity: .7;
 }
 
 .yearsArray{
+	color: black;
+    z-index: 1;
 	width: 100%;
+	font-size:16px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .yearsArray > div {
     display: inline-block;
     *display: inline; /* For IE7 */
     zoom: 1; /* Trigger hasLayout */
     text-align: center;
+}
+
+.singleYear{
+	font-color: black;
 }
 
 .actionButton{
@@ -101,4 +120,49 @@ opacity: .7;
 #replayButton{
 	display: inline-block;
 	float:right;
+}
+
+/* RESPONSIVE */
+@media all and (max-width: 600px) {
+	.title{
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size:16px;
+	}
+
+	h2{
+		font-size: 14px;
+	}
+
+	.actionButton{
+		display: inline-block;
+		height: 15px;
+		width: 15px;
+	}
+
+	.progressBar{
+		margin-left: 0;
+		margin-right: 0;
+		width: auto;
+	}
+
+	.dataBar.front{ 
+	   -webkit-transition: width 4s, height 4s; /* For Safari 3.1 to 6.0 */
+	    transition: width 4s, height 4s,
+	}
+
+	.yearsArray > div {
+	    font-size: .75em;
+	    padding-left:2px;
+	    padding-right:2px;
+	}
+
+	.recharts-text.recharts-cartesian-axis-tick-value{
+		font-size:10px;
+		font-weight:normal;
+	}
+
+	.recharts-layer.recharts-label-list{
+		font-size:10px;
+	}
 }
