@@ -177,6 +177,18 @@ opacity: .7;
 
 /* RESPONSIVE */
 @media all and (max-width: 600px) {
+
+	.App{
+		padding-left:10px;
+		padding-right:10px;
+	}
+
+	.projectContainer{
+	    margin-left:10px;
+	    margin-right:10px;
+	    padding: 10px 10px 10px 10px;
+	}
+
 	.title{
 		text-transform: uppercase;
 		font-weight: bold;
@@ -200,7 +212,7 @@ opacity: .7;
 	.progressBar{
 		margin-left: 0;
 		margin-right: 0;
-		width: auto;
+		width: 80%;
 	}
 
 	.dataBar.front{ 

@@ -13,7 +13,7 @@ class Chart extends Component {
         <text 
            x={(x-6) + width / 2}
            y={y} 
-           dy={13} 
+           dy={-5} 
            fontSize='14' 
            fontFamily='Merriweather Sans'
            fill="black"
@@ -51,7 +51,12 @@ class Chart extends Component {
              fontWeight="normal" 
              
              />
-         <YAxis hide/>
+         <YAxis 
+            domain={[0, 60]} 
+            axisLine={false}
+            tick = {false}
+            width = {0}
+         />
          <Tooltip  content={renderTooltip}
          cursor={false}/>
          <Bar 
