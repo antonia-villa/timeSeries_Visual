@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, LabelList} from 'recharts';
 import {reFormat} from './dataCleansing.js'
 
@@ -41,13 +39,11 @@ class Chart extends Component {
         }
     }
 
-console.log(data)
   return(
-    
       <ResponsiveContainer height={450}>
         <BarChart 
               data={data}
-              margin={{top: 0, right: 0, left: 0, bottom: 0}}>
+              margin={{top: 2, right: 0, left: 0, bottom: 0}}>
          <XAxis 
              dataKey="island"
              fontFamily="Merriweather Sans"
@@ -63,14 +59,14 @@ console.log(data)
              barSize ={200}
              fontFamily="Merriweather Sans"
              fill="#96c568" >
-            <LabelList content={CustomizedLabel}/>}
+            <LabelList content={CustomizedLabel}/>
           >
           </Bar>
         </BarChart>
-        </ResponsiveContainer>
-      );
-    }
+      </ResponsiveContainer>
+    );
   }
+}
 
 
 export default Chart;

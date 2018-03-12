@@ -21,6 +21,7 @@ class VisualContainer extends Component {
         initialYear: '',
         initialYearIndex: '',
         initialProgress: '',
+        initialPausedState: '',
         yearIndex: '',
         year: '',
         progress: '',
@@ -47,7 +48,6 @@ class VisualContainer extends Component {
       // Used to update for Progress Bar component
       var progressPercent = Number((this.state.yearIndex/(uniqueYears.length-1)*100).toFixed(0))
 
-      // Update state
       this.setState({
       	data: results,
       	year: year,
@@ -70,18 +70,18 @@ class VisualContainer extends Component {
 	componentWillMount(){
 		// Extract and parse query string parameters 
    		var queryParams = parseQueryString.parse(this.props.location.search);
-   
 		var year = queryParams.year
 		var indexYear = this.state.uniqueYears.indexOf(Number(year))
 		var paused = (queryParams.paused === 'true')
 
-		 var progressPercent = Number((indexYear/(this.state.uniqueYears.length-1)*100).toFixed(0))
+		var progressPercent = Number((indexYear/(this.state.uniqueYears.length-1)*100).toFixed(0))
 		
 		// Set State and run interval
 		this.setState({
 			initialYear: year,
         	initialYearIndex: indexYear,
         	initialProgress: progressPercent,
+        	initialPausedState: paused,
 			year: year,
 			yearIndex: indexYear,
 			progress: progressPercent,
@@ -112,7 +112,7 @@ class VisualContainer extends Component {
    handleRestart(event){
    	  event.preventDefault();
    	  this.setState({
-   	  	paused: false,
+   	  	paused: this.state.initialPausedState,
    	  	year: this.state.initialYear,
    	  	progress: this.state.initialProgress,
    	  	yearIndex: this.state.initialYearIndex
@@ -149,7 +149,5 @@ class VisualContainer extends Component {
     );
   }
 }
-
-
 
 export default VisualContainer;

@@ -11,7 +11,6 @@ export function reFormat(data){
       item.percent = Number(((item.pigPopulation/total)*100).toFixed(0))
   })
 
-    // return data
 	return data
 }
 
