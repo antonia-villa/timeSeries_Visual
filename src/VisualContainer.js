@@ -18,9 +18,12 @@ class VisualContainer extends Component {
       this.state = {
       	allData: data["PIG POPULATIONS"],
       	uniqueYears: uniqueValues(data["PIG POPULATIONS"]),
+        initialYear: '',
+        initialYearIndex: '',
+        initialProgress: '',
         yearIndex: '',
         year: '',
-        progress: 0,
+        progress: '',
         data: [],
         paused: ''
       }
@@ -64,27 +67,32 @@ class VisualContainer extends Component {
    }
 
 
-   componentDidMount () {
-	    // Extract and parse query string parameters 
+	componentWillMount(){
+		// Extract and parse query string parameters 
    		var queryParams = parseQueryString.parse(this.props.location.search);
+   
 		var year = queryParams.year
 		var indexYear = this.state.uniqueYears.indexOf(Number(year))
 		var paused = (queryParams.paused === 'true')
+
+		 var progressPercent = Number((indexYear/(this.state.uniqueYears.length-1)*100).toFixed(0))
 		
 		// Set State and run interval
 		this.setState({
-			paused: paused,
+			initialYear: year,
+        	initialYearIndex: indexYear,
+        	initialProgress: progressPercent,
 			year: year,
-			yearIndex: indexYear
-		},
-		() => {
+			yearIndex: indexYear,
+			progress: progressPercent,
+			paused: paused
+		},() => {
 			this.changeData(this.state.uniqueYears)
 				if(!this.state.paused){
 					this.timerID = setInterval(
 	            		() => this.changeData(), 2000);    	
 				}
-			}
-		)
+			})
 	}
 
 
@@ -105,13 +113,10 @@ class VisualContainer extends Component {
    	  event.preventDefault();
    	  this.setState({
    	  	paused: false,
-   	  	year: 2000,
-   	  	progress: 0,
-   	  	yearIndex: 0
+   	  	year: this.state.initialYear,
+   	  	progress: this.state.initialProgress,
+   	  	yearIndex: this.state.initialYearIndex
    	  })
-   	        this.timerID = setInterval(
-            () => this.changeData(), 2000
-      );    
    }
    
 

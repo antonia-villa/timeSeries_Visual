@@ -13,9 +13,9 @@ class Chart extends Component {
     const {x, y, value, width, height} = props;
       return (
         <text 
-           x={(x-5) + width / 2}
+           x={(x-6) + width / 2}
            y={y} 
-           dy={-5} 
+           dy={13} 
            fontSize='14' 
            fontFamily='Merriweather Sans'
            fill="black"
@@ -41,8 +41,9 @@ class Chart extends Component {
         }
     }
 
-
+console.log(data)
   return(
+    
       <ResponsiveContainer height={450}>
         <BarChart 
               data={data}
