@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 /* Additional Components */
 import Chart from './barChart.js'
-import ProgressBar from './progressBar.js'
+// import ProgressBar from './progressBar.js'
+import ProgressBar from './progressBar2.js'
 
 /* Import Data */
 import * as data from './wild-pig-data.json';
@@ -135,7 +136,8 @@ class VisualContainer extends Component {
 			        <img className="actionButton" src="pause.png" alt="Pause" onClick={this.handlePause}/>
 			    </div> 
 		        <div className="progressBar">
-		       		<ProgressBar year={this.state.year} yearIndex={this.state.yearIndex} progress={this.state.progress} allYears={this.state.uniqueYears} />
+		       		{/*<ProgressBar year={this.state.year} yearIndex={this.state.yearIndex} progress={this.state.progress} allYears={this.state.uniqueYears} />*/}
+		       		<ProgressBar paused = {this.state.paused} progress={this.state.progress} />
 		        </div>
 		       <div id="replayButton"> 
 		        	<img className="actionButton" src="restart.png" alt="Restart" onClick={this.handleRestart}/>

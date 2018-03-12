@@ -6,9 +6,10 @@ export function reFormat(data){
       total += item.pigPopulation
     })
 
-    // Add Percent of total to data
+    // Add Percent of total and total data
     data.forEach(function(item){
       item.percent = Number(((item.pigPopulation/total)*100).toFixed(0))
+      item.total = total;
   })
 
 	return data

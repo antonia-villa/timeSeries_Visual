@@ -27,13 +27,17 @@ class Chart extends Component {
     // Customize Tooltip Content
     const renderTooltip = (props) => {
       const { active, payload } = props;
+
         if (active && payload && payload.length) {
+
           const data = payload[0].payload;
+
           return (
             <div className="customizedToolTip">
               <p className="ToolTipTitle">{data.island}</p>
-              <p className="ToolTipText">Total: {data.percent}%</p>
-              <p className="ToolTipText">Population: {data.pigPopulation.toLocaleString()}</p>
+              <p className="ToolTipText">Distribution: {data.percent}%</p>
+              <p className="ToolTipText"># of Pigs: {data.pigPopulation.toLocaleString()}</p>
+              <p className="ToolTipText">Total Pigs {data.year}: {data.total.toLocaleString()}</p>
             </div>
           );
         }
