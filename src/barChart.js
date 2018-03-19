@@ -36,8 +36,8 @@ class Chart extends Component {
             <div className="customizedToolTip">
               <p className="ToolTipTitle">{data.continent}</p>
               <p className="ToolTipText">Distribution: {data.percent}%</p>
-              <p className="ToolTipText"># of Pigs: {data.population.toLocaleString()}</p>
-              <p className="ToolTipText">Total Pigs {data.year}: {data.total.toLocaleString()}</p>
+              <p className="ToolTipText">Predicted Pop.: {data.population.toLocaleString()}</p>
+              <p className="ToolTipText">Total Predicted Pop. {data.year}: {data.total.toLocaleString()}</p>
             </div>
           );
         }
@@ -56,7 +56,7 @@ class Chart extends Component {
              
              />
          <YAxis 
-            domain={[0, 80]} 
+            domain={[0, 70]} 
             axisLine={false}
             tick = {false}
             width = {0}

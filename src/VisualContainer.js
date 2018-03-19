@@ -71,7 +71,7 @@ class VisualContainer extends Component {
 
 	componentWillMount(){
 		// Extract and parse query string parameters 
-   		var queryParams = parseQueryString.parse(this.props.location.search);
+   	var queryParams = parseQueryString.parse(this.props.location.search);
 		var year = queryParams.year
 		var indexYear = this.state.uniqueYears.indexOf(Number(year))
 		var paused = (queryParams.paused === 'true')
@@ -121,14 +121,13 @@ class VisualContainer extends Component {
    	  })
    }
    
-
   render() {
     return (
-    <div className="visualBackground">
+    <div className="visualBackground" style={{backgroundColor: "#FFFFFF"}}>
 	    <div className="visualContainer">
 	    	<div className="titleContainer">
-	    		<h1 className="title">Hawaiian Wild Pig Population</h1>
-	    		<h2 className="subtitle">Distribution by Island: 2001-2005</h2>
+	    		<h1 className="title">Population Projections (in millions)</h1>
+	    		<h2 className="subtitle">Distribution by Continent: 2010-2035</h2>
 		    </div>
 		    <Chart data = {this.state.data}/>
 		    <div className="actions">
@@ -144,7 +143,7 @@ class VisualContainer extends Component {
 		        </div>
 		    </div>
 		    <div className="footer">
-		    	<p>NOTE: The data displayed represents the percent distribution of the total pig population of Hawaii by island by year.</p>
+		    	<p>NOTE: Long-term global population growth is difficult to predict. The data displayed represents the percent distribution of the predicted population of the World by Continent by year provided by the United Nations <a href="https://en.wikipedia.org/wiki/World_population">[source]</a>. </p>
 		    </div>
 		</div>
 	</div>

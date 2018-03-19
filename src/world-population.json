@@ -18,12 +18,12 @@
 		},
 		{
 			"year": 2010,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 596 
 		},
 		{
 			"year": 2010,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 347 
 		},
 		{
@@ -48,12 +48,12 @@
 		},
 		{
 			"year": 2015,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 630 
 		},
 		{
 			"year": 2015,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 361 
 		},
 		{
@@ -78,12 +78,12 @@
 		},
 		{
 			"year": 2020,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 662 
 		},
 		{
 			"year": 2020,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 376
 		},
 		{
@@ -108,12 +108,12 @@
 		},
 		{
 			"year": 2025,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 691 
 		},
 		{
 			"year": 2025,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 390
 		},
 		{
@@ -138,12 +138,12 @@
 		},
 		{
 			"year": 2030,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 717 
 		},
 		{
 			"year": 2030,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 403
 		},
 		{
@@ -168,12 +168,12 @@
 		},
 		{
 			"year": 2035,
-			"continent": "Latin America/Caribbean",
+			"continent": "South America",
 			"population": 739
 		},
 		{
 			"year": 2035,
-			"continent": "Northern America",
+			"continent": "North America",
 			"population": 415
 		},
 		{
