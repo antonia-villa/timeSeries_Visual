@@ -3,12 +3,12 @@ export function reFormat(data){
 	 // Calculate Total for Year to represent data as % of Total
     var total = 0;
     data.forEach(function(item){
-      total += item.pigPopulation
+      total += item.population
     })
 
     // Add Percent of total and total data
     data.forEach(function(item){
-      item.percent = Number(((item.pigPopulation/total)*100).toFixed(0))
+      item.percent = Number(((item.population/total)*100).toFixed(0))
       item.total = total;
   })
 

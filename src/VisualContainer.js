@@ -6,7 +6,8 @@ import Chart from './barChart.js'
 import ProgressBar from './progressBar.js'
 
 /* Import Data */
-import * as data from './wild-pig-data.json';
+// import * as data from './wild-pig-data.json';
+import * as data from './world-population.json';
 /* Import Data cleansing function */
 import {uniqueValues} from './dataCleansing.js'
 
@@ -17,8 +18,8 @@ class VisualContainer extends Component {
    constructor(props){
       super(props)
       this.state = {
-      	allData: data["PIG POPULATIONS"],
-      	uniqueYears: uniqueValues(data["PIG POPULATIONS"]),
+      	allData: data["WORLD POPULATION"],
+      	uniqueYears: uniqueValues(data["WORLD POPULATION"]),
         initialYear: '',
         initialYearIndex: '',
         initialProgress: '',
